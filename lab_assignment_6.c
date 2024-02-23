@@ -1,7 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int search(int numbers[], int low, int high, int value) 
 {
+	int mid = (high - low)/2;
+	while (low <= high){
+		int mid = (high + low)/2;
+		if (numbers[mid] == value){
+			return mid;
+		}
+		else if (value < numbers[mid]){
+			return search (numbers, low, mid-1, value);
+		}
+		else if (value > numbers[mid]){
+			return search (numbers, mid+1, high, value);
+		}
+	}
 	return -1;
 }
 
